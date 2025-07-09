@@ -10,7 +10,7 @@ dotenv.config();
 
 app.use(express.json());
 app.use('/auth', userRoute)
-app.use("/video", videoRoute)
+app.use("/api", videoRoute)
 
 
 
