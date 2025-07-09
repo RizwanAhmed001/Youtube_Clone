@@ -1,12 +1,16 @@
 const express = require("express");
 const { default: mongoose } = require("mongoose");
 const userRoute = require("./routes/user.route");
+const dotenv = require("dotenv");
+const videoRoute = require("./routes/video.route");
 
 const app = new express();
+dotenv.config();
 
 
 app.use(express.json());
 app.use('/auth', userRoute)
+app.use("/video", videoRoute)
 
 
 
@@ -14,16 +18,14 @@ app.use('/auth', userRoute)
 
 
 
-const MONGO_URL =
-  "mongodb+srv://Rizwan_Ahmed:rls_YouTube@cluster0.xfthx9w.mongodb.net/youtubeData?retryWrites=true&w=majority&appName=Cluster0";
-mongoose.connect(MONGO_URL);
+mongoose.connect(process.env.MONGO_URI,);
 
 let db = mongoose.connection;
 db.on("open", () => {
   console.log("Connection Succesful!");
-  const PORT = 4000;
-  app.listen(PORT, () => {
-    console.log(`Server running at port http://localhost:${PORT}`);
+  const port = process.env.PORT;
+  app.listen(port, () => {
+    console.log(`Server running at port http://localhost:${port}`);
   });
 });
 db.on("error", () => {

@@ -1,6 +1,15 @@
 const User = require("../models/user.model")
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken")
+const dotenv = require("dotenv")
+dotenv.config()
 
+
+const cookieOptions = {
+  httpOnly: true,
+  secure: false,
+  sameSite: "Lax"
+}
 
 exports.signUp = async (req, res) => {
   try{
@@ -53,7 +62,10 @@ exports.signIn = async (req, res) => {
     const user = await User.findOne({email});
 
     if(user && await bcrypt.compare(password, user.password)){
-      res.json({message: "Logged in succesfully"})
+      const token = jwt.sign({userId: user._id}, process.env.JWT_SECRET, { expiresIn: "1d" })
+
+      res.cookie("token", token,  cookieOptions)
+      res.json({message: "Logged in succesfully", token})
     }
     else{
       return res.status(400).json({message: "Invalid Credentials"})
@@ -62,6 +74,10 @@ exports.signIn = async (req, res) => {
   }catch(err){
 
   }
+}
+
+exports.logout = async (req, res) => {
+  res.clearCookie("token", cookieOptions).json({message: "Logged out Succesfully"})
 }
 
 
