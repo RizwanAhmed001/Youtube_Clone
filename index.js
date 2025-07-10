@@ -3,17 +3,20 @@ const { default: mongoose } = require("mongoose");
 const userRoute = require("./routes/user.route");
 const dotenv = require("dotenv");
 const videoRoute = require("./routes/video.route");
+const cookieParser = require("cookie-parser");
+const channelRoute = require("./routes/channel.route");
+
+
 
 const app = new express();
 dotenv.config();
 
 
 app.use(express.json());
+app.use(cookieParser());
 app.use('/auth', userRoute)
 app.use("/api", videoRoute)
-
-
-
+app.use("/api", channelRoute)
 
 
 

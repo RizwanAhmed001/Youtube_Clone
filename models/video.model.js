@@ -1,16 +1,27 @@
 const mongoose  = require("mongoose")
 
 const videoSchema = new mongoose.Schema({
+    user:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "user",
+        required: true
+    },
     title: { 
         type: String, 
         required: true 
     },
     description: { 
-        type: String 
+        type: String ,
+        required: true
     },
     videoLink: { 
         type: String, 
         required: true 
+    },
+    channel: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: "channel"
     },
     thumbnail: { 
         type: String ,
