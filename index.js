@@ -3,9 +3,9 @@ const { default: mongoose } = require("mongoose");
 const userRoute = require("./routes/user.route");
 const dotenv = require("dotenv");
 const videoRoute = require("./routes/video.route");
-const cookieParser = require("cookie-parser");
 const channelRoute = require("./routes/channel.route");
-
+const commentRoute = require("./routes/comment.route");
+const cookieParser = require("cookie-parser");
 
 
 const app = new express();
@@ -17,6 +17,7 @@ app.use(cookieParser());
 app.use('/auth', userRoute)
 app.use("/api", videoRoute)
 app.use("/api", channelRoute)
+app.use("/commentApi", commentRoute)
 
 
 

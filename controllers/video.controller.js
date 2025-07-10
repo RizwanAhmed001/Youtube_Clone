@@ -1,21 +1,47 @@
 const Video = require("../models/video.model")
 const Channel = require("../models/channel.model");
-exports.uploadVideo = async (req, res) => {
-  try{
 
-    const {title, description, videoLink, videoType, thumbnail} = req.body;
-    if(!title || !description || !videoLink || !thumbnail){
-      return res.status(400).json({message: "All Fields are mandatory"})
+exports.uploadVideo = async (req, res) => {
+  try {
+    const { title, description, videoLink, videoType, thumbnail } = req.body;
+
+    // 1. Validation
+    if (!title || !description || !videoLink || !thumbnail) {
+      return res.status(400).json({ message: "All fields are mandatory" });
     }
-    let userId = req.user._id;
-    const channelData = await Channel.findOne({user: userId})
-    const videoUpload = new Video({user: userId, title, channel: channelData,  description,videoLink, videoType, thumbnail })
+
+    const userId = req.user._id;
+
+    // 2. Find the user's channel
+    const channel = await Channel.findOne({ user: userId });
+
+    if (!channel) {
+      return res.status(404).json({ message: "Channel not found for this user" });
+    }
+
+    // 3. Create and save video
+    const videoUpload = new Video({
+      user: userId,
+      channel: channel._id,  // store channel ID, not the full document
+      title,
+      description,
+      videoLink,
+      videoType,
+      thumbnail
+    });
 
     await videoUpload.save();
-    res.status(201).json({message: "Video Uploaded", videoUpload})
 
-  }catch(err){
-    res.status(500).json({message: "Something went wrong while uploading the video"})
+    // 4. Add video to the channel's video list
+    channel.video.push(videoUpload._id);
+    await channel.save();
+
+    // 5. Success response
+    res.status(201).json({ message: "Video uploaded successfully", video: videoUpload });
+
+  } catch (err) {
+    console.error("Upload error:", err);
+    res.status(500).json({ message: "Something went wrong while uploading the video" });
   }
 }
 
