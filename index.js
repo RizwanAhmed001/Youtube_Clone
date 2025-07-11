@@ -6,12 +6,16 @@ const videoRoute = require("./routes/video.route");
 const channelRoute = require("./routes/channel.route");
 const commentRoute = require("./routes/comment.route");
 const cookieParser = require("cookie-parser");
+const cors = require("cors")
 
 
 const app = new express();
 dotenv.config();
 
-
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true
+}));
 app.use(express.json());
 app.use(cookieParser());
 app.use('/auth', userRoute)

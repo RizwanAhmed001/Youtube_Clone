@@ -66,7 +66,7 @@ exports.getVideoById = async (req, res) => {
     const {id} = req.params;
     const video = await Video.findById(id)
     .populate("user", "userName profilePic")
-    .populate("channel", "channelName createdAt")
+    .populate("channel", "channelName createdAt channelPic")
     if(video.length === 0){
       return res.status(404).json({message: "No such Videos"})
     }
