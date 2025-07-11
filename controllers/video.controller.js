@@ -81,7 +81,7 @@ exports.getAllVideoByUserId = async (req, res) => {
     let {userId} = req. params;
     const videos = await Video.find({user: userId})
     .populate("user", "userName profilePic")
-    .populate("channel", "channelName createdAt")
+    .populate("channel")
     if(videos.length === 0){
       return res.status(404).json({message: "No such user!"})
     }
