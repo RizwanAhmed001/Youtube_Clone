@@ -8,7 +8,6 @@ const videoRoute = express.Router();
 videoRoute.post("/video",auth, uploadVideo)
 videoRoute.get("/allVideo", getAllVideo)
 videoRoute.get("/getVideoById/:id", getVideoById);
-videoRoute.get("/:userId/channel", getAllVideoByUserId)
 
 
 module.exports = videoRoute;
