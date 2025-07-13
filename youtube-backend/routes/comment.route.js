@@ -1,3 +1,17 @@
+// const express = require("express")
+// const auth = require("../middleware/authentication");
+// const { addComment, deleteComment, getCommentByVideoId, updateComment } = require("../controllers/comment.controller");
+
+// const commentRoute = express.Router();
+
+// commentRoute.post("/comment", auth, addComment)
+// commentRoute.get("/comment/:videoId", getCommentByVideoId);
+// commentRoute.put("/comment/:commentId", auth, updateComment)
+// commentRoute.delete("/comment/:commentId", auth, deleteComment)
+
+// module.exports = commentRoute;
+
+// Comments
 const express = require("express");
 const auth = require("../middleware/authentication");
 

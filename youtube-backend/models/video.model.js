@@ -1,3 +1,53 @@
+// const mongoose  = require("mongoose")
+
+// const videoSchema = new mongoose.Schema({
+//     user:{
+//         type: mongoose.Schema.Types.ObjectId,
+//         ref: "user",
+//         required: true
+//     },
+//     title: { 
+//         type: String, 
+//         required: true 
+//     },
+//     description: { 
+//         type: String ,
+//         required: true
+//     },
+//     videoLink: { 
+//         type: String, 
+//         required: true 
+//     },
+//     channel: {
+//         type: mongoose.Schema.Types.ObjectId,
+//         required: true,
+//         ref: "channel"
+//     },
+//     thumbnail: { 
+//         type: String ,
+//         required:true
+//     },
+//     views: { 
+//         type: Number, 
+//         default: 0 
+//     },
+//     likes: { 
+//         type: Number, 
+//         default: 0 
+//     },
+//     dislikes: { 
+//         type: Number, 
+//         default: 0 
+//     },
+//     videoType: { 
+//         type: String ,
+//         default: "All"
+//     },
+// },{ timestamps: true });
+
+// module.exports =  mongoose.model("video", videoSchema);
+
+// Comments
 const mongoose = require("mongoose");
 
 // 🟢 Schema definition for a Video document

@@ -1,3 +1,20 @@
+// const express = require("express");
+// const {uploadVideo, getAllVideo, getVideoById, getAllVideoByUserId, incrementLike, incrementDislike} = require("../controllers/video.controller")
+// const auth = require("../middleware/authentication");
+
+// const videoRoute = express.Router();
+
+
+// videoRoute.post("/video",auth, uploadVideo)
+// videoRoute.get("/allVideo", getAllVideo)
+// videoRoute.get("/getVideoById/:id", getVideoById);
+// videoRoute.put("/likes/:videoId", auth, incrementLike)
+// videoRoute.put("/dislike/:videoId", auth, incrementDislike)
+
+
+// module.exports = videoRoute;
+
+// Comments
 const express = require("express");
 
 // Import controller functions to handle video-related operations
