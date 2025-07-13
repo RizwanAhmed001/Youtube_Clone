@@ -138,7 +138,12 @@ Make sure your frontend .
 <!-- gitHub Project Link  -->
 <!-- https://github.com/RizwanAhmed001/Youtube_Clone -->
 
-<!-- A short demo video is in youtube-frontend publib folder -->
+<!-- A short demo video is in youtube-frontend public folder -->
+
+
+<!-- Front end repo -->
+<!-- https://github.com/RizwanAhmed001/youtube-frontend-correct -->
+
 
 🧑‍💻 Author
 Rizwan Ahmed
