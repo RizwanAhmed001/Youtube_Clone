@@ -136,7 +136,7 @@ npm run dev
 Make sure your frontend .
 
 <!-- gitHub Project Link  -->
-https://github.com/RizwanAhmed001/Youtube_Clone
+<!-- https://github.com/RizwanAhmed001/Youtube_Clone -->
 
 <!-- A short demo video is in youtube-frontend publib folder -->
 
